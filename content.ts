@@ -52,7 +52,7 @@ export const content: Content = {
 
   stakes: {
     statement:
-      'Every app you love runs on infrastructure most people never think about. I think about it every day.',
+      'Backend services, cloud pipelines, DevOps automation, AI tooling — different problems, same standard: ship it reliably and make it scale.',
     stats: [
       { value: 3,  suffix: '+', label: 'Years of engineering' },
       { value: 2,  suffix: '',  label: 'Graduate degrees' },
@@ -62,7 +62,7 @@ export const content: Content = {
 
   about: {
     photo: '/images/sid.jpg',
-    bio: "Backend engineer with 3+ years building scalable Python/FastAPI services, cloud-native architectures, and DevOps pipelines on AWS. MSc in Distributed Systems Engineering from TU Dresden — with research in ML-based anomaly detection. I care deeply about the layer most people never see.",
+    bio: "Backend engineer with 3+ years shipping Python/FastAPI services, cloud infrastructure, CI/CD pipelines, and AI tooling across startups, research, and enterprise. MSc from TU Dresden. Comfortable from API design to Kubernetes deployments — I like to own problems end to end.",
     tags: ['Python', 'FastAPI', 'AWS', 'Distributed Systems', 'RAG', 'OpenTelemetry', 'Kubernetes', 'Docker'],
   },
 

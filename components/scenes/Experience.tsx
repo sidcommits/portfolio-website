@@ -245,15 +245,15 @@ export default function Experience() {
     >
       {/* Headline */}
       <div ref={headlineRef} className="w-full max-w-5xl mb-10 opacity-0">
-        <p className="font-mono text-xs tracking-widest uppercase text-orange mb-2">The Journey</p>
+        <p className="font-mono text-xs tracking-widest uppercase text-orange mb-2">Experience</p>
         <h2 className="font-display font-bold text-[clamp(2rem,5vw,3.8rem)] text-ink leading-none">
-          From Pune to Dresden.{' '}
-          <span className="text-gray">From SAP to satellites.</span>
+          3+ years across startups,{' '}
+          <span className="text-gray">research labs, and enterprise.</span>
         </h2>
       </div>
 
       {/* Cards */}
-      <div ref={cardsRef} className="grid grid-cols-4 gap-4 w-full max-w-5xl">
+      <div ref={cardsRef} className="grid grid-cols-2 gap-5 w-full max-w-5xl">
         {content.experience.map((item, i) => {
           const Illustration = ILLUSTRATIONS[i]
           return (

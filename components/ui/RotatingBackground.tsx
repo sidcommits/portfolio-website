@@ -92,8 +92,8 @@ export default function RotatingBackground() {
       end: '13% top',
       scrub: 1.5,
       onUpdate: (self) => {
-        // 1 → 0.12 multiplier (words become very faint texture after hero)
-        const multiplier = 1 - self.progress * 0.88
+        // 1 → 0.5 multiplier (words settle at half hero opacity after scrolling)
+        const multiplier = 1 - self.progress * 0.5
         wordEls.forEach((el, i) => {
           gsap.set(el, { opacity: baseOpacities[i] * multiplier })
         })
