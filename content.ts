@@ -13,6 +13,8 @@ export interface Project {
   stack: string[]
   status: 'shipped' | 'in progress'
   link: string | null
+  github: string | null
+  website: string | null
 }
 
 export interface ExperienceItem {
@@ -54,9 +56,9 @@ export const content: Content = {
     statement:
       'Backend services, cloud pipelines, DevOps automation, AI tooling — different problems, same standard: ship it reliably and make it scale.',
     stats: [
-      { value: 3,  suffix: '+', label: 'Years of engineering' },
-      { value: 2,  suffix: '',  label: 'Graduate degrees' },
-      { value: 40, suffix: '%', label: 'Avg latency improvement' },
+      { value: 3, suffix: '+', label: 'Years of engineering' },
+      { value: 2, suffix: '',  label: 'Graduate degrees' },
+      { value: 1, suffix: '',  label: 'arXiv preprint' },
     ],
   },
 
@@ -119,6 +121,8 @@ export const content: Content = {
       stack: ['Python', 'Loki', 'Vector DB', 'RAG', 'LLM'],
       status: 'shipped',
       link: null,
+      github: 'https://github.com/sidcommits/semantic-log-search',
+      website: null,
     },
     {
       chapter: '02',
@@ -129,6 +133,8 @@ export const content: Content = {
       stack: ['React Native', 'Node.js', 'AI', 'Payment API'],
       status: 'in progress',
       link: null,
+      github: 'https://github.com/sidcommits/surprise-meal',
+      website: null,
     },
     {
       chapter: '03',
@@ -139,6 +145,8 @@ export const content: Content = {
       stack: ['Solidity', 'WebSockets', 'QR', 'PWA'],
       status: 'shipped',
       link: null,
+      github: 'https://github.com/sidcommits/nft-display-monitor',
+      website: null,
     },
   ],
 

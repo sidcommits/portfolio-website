@@ -80,6 +80,20 @@ export default function ProjectMeal() {
           <span className="font-mono text-xs tracking-widest uppercase text-orange animate-pulse">
             ◉ {project.status}
           </span>
+          <div className="flex gap-3 pt-2">
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer"
+                className="font-mono text-xs px-3 py-1.5 border border-ink/20 rounded-full text-ink hover:border-orange hover:text-orange transition-colors duration-200">
+                GitHub →
+              </a>
+            )}
+            {project.website && (
+              <a href={project.website} target="_blank" rel="noopener noreferrer"
+                className="font-mono text-xs px-3 py-1.5 bg-orange text-cream rounded-full hover:opacity-80 transition-opacity duration-200">
+                Live →
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </section>
