@@ -50,21 +50,26 @@ export default function RotatingBackground() {
       phaseY: Math.random() * Math.PI * 2,
     }))
 
+    // Per-word base opacity (stored for fade calculations)
+    const baseOpacities: number[] = []
+
     // Set initial positions and make visible
     wordEls.forEach((el, i) => {
       const p = params[i]
       const x = p.baseX + p.ampX * Math.sin(p.phaseX)
       const y = p.baseY + p.ampY * Math.cos(p.phaseY)
+      const opacity = 0.17 + Math.random() * 0.06
+      baseOpacities.push(opacity)
       gsap.set(el, {
         left: `${x}vw`,
         top:  `${y}vh`,
-        opacity: 0.17 + Math.random() * 0.06,
+        opacity,
         fontSize: `${13 + Math.random() * 3}px`,
       })
     })
 
     // Scroll-driven curved motion
-    const st = ScrollTrigger.create({
+    const stMotion = ScrollTrigger.create({
       trigger: document.documentElement,
       start: 'top top',
       end: 'bottom bottom',
@@ -80,7 +85,22 @@ export default function RotatingBackground() {
       },
     })
 
-    return () => { st.kill() }
+    // Fade words out as user scrolls past the hero scene (~first 13% of total scroll)
+    const stFade = ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: 'top top',
+      end: '13% top',
+      scrub: 1.5,
+      onUpdate: (self) => {
+        // 1 → 0.12 multiplier (words become very faint texture after hero)
+        const multiplier = 1 - self.progress * 0.88
+        wordEls.forEach((el, i) => {
+          gsap.set(el, { opacity: baseOpacities[i] * multiplier })
+        })
+      },
+    })
+
+    return () => { stMotion.kill(); stFade.kill() }
   }, [])
 
   return (
