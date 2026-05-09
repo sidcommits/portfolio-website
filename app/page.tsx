@@ -1,5 +1,5 @@
-// app/page.tsx
 import ColdOpen    from '@/components/scenes/ColdOpen'
+import Experience  from '@/components/scenes/Experience'
 import Stakes      from '@/components/scenes/Stakes'
 import Engineer    from '@/components/scenes/Engineer'
 import ProjectLog  from '@/components/scenes/ProjectLog'
@@ -14,6 +14,7 @@ export default function Home() {
     <main>
       <Navbar />
       <ColdOpen />
+      <Experience />
       <Stakes />
       <Engineer />
       <ProjectLog />

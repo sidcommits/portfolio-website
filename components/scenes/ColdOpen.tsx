@@ -10,7 +10,7 @@ export default function ColdOpen() {
   const ruleRef    = useRef<SVGLineElement>(null)
   const titleRef   = useRef<HTMLParagraphElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
-  const scrollRef  = useRef<HTMLSpanElement>(null)
+  const scrollRef  = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,12 +84,19 @@ export default function ColdOpen() {
         </p>
       </div>
 
-      <span
+      <div
         ref={scrollRef}
-        className="absolute bottom-10 font-mono text-xs tracking-widest text-gray opacity-0"
+        className="absolute bottom-8 flex flex-col items-center gap-2 opacity-0"
       >
-        SCROLL ↓
-      </span>
+        <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-gray">
+          yes, keep scrolling
+        </span>
+        <div className="flex flex-col items-center gap-1">
+          <span className="text-orange text-lg leading-none">↓</span>
+          <span className="text-orange/50 text-sm leading-none">↓</span>
+          <span className="text-orange/20 text-xs leading-none">↓</span>
+        </div>
+      </div>
     </section>
   )
 }

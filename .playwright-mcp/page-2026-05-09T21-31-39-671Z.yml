@@ -1,0 +1,127 @@
+- main [ref=e3]:
+  - navigation [ref=e4]:
+    - text: SD
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "About" [ref=e7] [cursor=pointer]:
+          - /url: "#engineer"
+      - listitem [ref=e8]:
+        - link "Work" [ref=e9] [cursor=pointer]:
+          - /url: "#projects"
+      - listitem [ref=e10]:
+        - link "Timeline" [ref=e11] [cursor=pointer]:
+          - /url: "#timeline"
+      - listitem [ref=e12]:
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=e14]:
+    - generic [ref=e15]: "{ }< />[ ]( )=>//&&||asyncawaitgoroutinekafkaraftvectorlokigrpcredisetcd0x1F01404∞"
+    - generic [ref=e16]:
+      - heading "Siddhant Deshpande" [level=1] [ref=e17]
+      - img [ref=e18]
+      - paragraph
+      - paragraph [ref=e19]: I build the infrastructure that keeps things running at scale.
+    - text: SCROLL ↓
+  - generic [ref=e20]:
+    - generic [ref=e21]: "{ }< />[ ]( )=>//&&||asyncawaitgoroutinekafkaraftvectorlokigrpcredisetcd"
+    - paragraph [ref=e22]:
+      - generic [ref=e23]: Every app you love runs on infrastructure
+      - text: most people never think about. I think about it every day.
+    - generic [ref=e24]:
+      - generic [ref=e25]: 0+Years of engineering
+      - generic [ref=e26]: 0Graduate degrees
+      - generic [ref=e27]: 0Systems shipped
+  - generic [ref=e29]:
+    - generic [ref=e30]:
+      - img "Siddhant Deshpande" [ref=e31]
+      - generic [ref=e32]: SD
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - paragraph [ref=e35]: The Engineer
+        - paragraph [ref=e36]: Siddhant Deshpande
+        - paragraph [ref=e37]: I'm a distributed systems engineer who obsesses over the invisible layer that makes software work at scale. I've shipped production systems, built AI-powered tooling, and I'm always working on something that solves a real problem.
+      - generic [ref=e38]: Distributed SystemsRAG PipelinesTypeScriptPythonGoVector DBs
+  - generic [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e42]: Chapter 01
+      - heading "Semantic Log Search" [level=2] [ref=e43]
+      - paragraph [ref=e44]: Find anything in your logs. Just ask.
+    - generic [ref=e45]:
+      - img [ref=e46]:
+        - generic [ref=e48]: Loki Logs
+        - generic [ref=e50]: Vector DB
+        - generic [ref=e51]: embeddings
+        - generic [ref=e53]: Natural Language
+      - generic [ref=e54]:
+        - paragraph [ref=e55]: Logs emitted to Loki are embedded and stored in a vector database. A RAG pipeline lets engineers query them in plain English — no more grep marathons.
+        - generic [ref=e56]: PythonLokiVector DBRAGLLM
+        - generic [ref=e57]: ● shipped
+  - generic [ref=e58]:
+    - generic [ref=e59]:
+      - generic [ref=e60]: Chapter 02
+      - heading "Surprise Meal" [level=2] [ref=e61]
+      - paragraph [ref=e62]: Subscriptions that actually delight.
+    - generic [ref=e63]:
+      - generic [ref=e66]:
+        - generic [ref=e67]:
+          - paragraph [ref=e68]: Balance
+          - paragraph [ref=e69]: ₹1,000
+        - generic [ref=e70]:
+          - paragraph [ref=e71]: Today's surprise
+          - paragraph [ref=e72]: 🍜 Ramen from Ichiban
+          - paragraph [ref=e73]: Delivered in 30 min
+      - generic [ref=e74]:
+        - paragraph [ref=e75]: Load a balance, answer a few questions about your taste, and let the system order you a surprising meal from a different restaurant every time. No decision fatigue.
+        - generic [ref=e76]: React NativeNode.jsAIPayment API
+        - generic [ref=e77]: ◉ in progress
+  - generic [ref=e78]:
+    - generic [ref=e79]:
+      - generic [ref=e80]: Chapter 03
+      - heading "NFT Display Monitor" [level=2] [ref=e81]
+      - paragraph [ref=e82]: Where crypto meets the physical world.
+    - generic [ref=e83]:
+      - generic [ref=e84]:
+        - img [ref=e85]
+        - text: →
+        - paragraph [ref=e94]: "NFT #4821"
+      - generic [ref=e95]:
+        - paragraph [ref=e96]: Scan a QR code, upload your photo, and watch your NFT materialise on a physical display screen. Bridges on-chain assets with the real world.
+        - generic [ref=e97]: CryptoQRWebSocketsDisplay
+        - generic [ref=e98]: ● shipped
+  - generic [ref=e99]:
+    - paragraph [ref=e100]: The Journey
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - text: "2019"
+        - heading "BS Computer Science" [level=3] [ref=e103]
+        - paragraph [ref=e104]: University name here
+        - text: education
+      - generic [ref=e105]:
+        - text: "2021"
+        - heading "Software Engineer" [level=3] [ref=e106]
+        - paragraph [ref=e107]: Company name here
+        - text: work
+      - generic [ref=e108]:
+        - text: "2023"
+        - heading "MS Distributed Systems" [level=3] [ref=e109]
+        - paragraph [ref=e110]: University name here
+        - text: education
+      - generic [ref=e111]:
+        - text: "2024"
+        - heading "Senior Engineer" [level=3] [ref=e112]
+        - paragraph [ref=e113]: Company name here
+        - text: work
+      - generic [ref=e114]: Present →
+  - generic [ref=e115]:
+    - heading "The next chapter needs a co-author." [level=2] [ref=e116]
+    - generic [ref=e117]:
+      - link "siddhantdeshpande3@gmail.com" [ref=e118] [cursor=pointer]:
+        - /url: mailto:siddhantdeshpande3@gmail.com
+      - generic [ref=e119]:
+        - link "GitHub" [ref=e120] [cursor=pointer]:
+          - /url: https://github.com/yourusername
+        - link "LinkedIn" [ref=e121] [cursor=pointer]:
+          - /url: https://linkedin.com/in/yourusername
+    - link "Let's talk →" [ref=e122] [cursor=pointer]:
+      - /url: mailto:siddhantdeshpande3@gmail.com
+    - paragraph [ref=e123]: 2026 · Siddhant Deshpande

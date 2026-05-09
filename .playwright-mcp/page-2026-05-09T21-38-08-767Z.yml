@@ -1,0 +1,220 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]: SD
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: "#engineer"
+        - listitem [ref=e8]:
+          - link "Work" [ref=e9] [cursor=pointer]:
+            - /url: "#projects"
+        - listitem [ref=e10]:
+          - link "Timeline" [ref=e11] [cursor=pointer]:
+            - /url: "#timeline"
+        - listitem [ref=e12]:
+          - link "Contact" [ref=e13] [cursor=pointer]:
+            - /url: "#contact"
+    - generic [ref=e15]:
+      - generic:
+        - generic: "{ }"
+        - generic: < />
+        - generic: "[ ]"
+        - generic: ( )
+        - generic: =>
+        - generic: //
+        - generic: "&&"
+        - generic: "||"
+        - generic: async
+        - generic: await
+        - generic: goroutine
+        - generic: kafka
+        - generic: raft
+        - generic: vector
+        - generic: loki
+        - generic: grpc
+        - generic: redis
+        - generic: etcd
+        - generic: "0x1F"
+        - generic: "01"
+        - generic: "404"
+        - generic: ∞
+      - generic [ref=e16]:
+        - heading "Siddhant Deshpande" [level=1] [ref=e17]
+        - img [ref=e18]
+        - paragraph [ref=e19]:
+          - generic [ref=e20]: D
+          - generic [ref=e21]: i
+          - generic [ref=e22]: s
+          - generic [ref=e23]: t
+          - generic [ref=e24]: r
+          - generic [ref=e25]: i
+          - generic [ref=e26]: b
+          - generic [ref=e27]: u
+          - generic [ref=e28]: t
+          - generic [ref=e29]: e
+          - generic [ref=e30]: d
+          - generic [ref=e32]: S
+          - generic [ref=e33]: "y"
+          - generic [ref=e34]: s
+          - generic [ref=e35]: t
+          - generic [ref=e36]: e
+          - generic [ref=e37]: m
+          - generic [ref=e38]: s
+          - generic [ref=e40]: E
+          - generic [ref=e41]: "n"
+          - generic [ref=e42]: g
+          - generic [ref=e43]: i
+          - generic [ref=e44]: "n"
+          - generic [ref=e45]: e
+          - generic [ref=e46]: e
+          - generic [ref=e47]: r
+        - paragraph [ref=e48]: I build the infrastructure that keeps things running at scale.
+      - generic [ref=e49]: SCROLL ↓
+    - generic [ref=e51]:
+      - generic:
+        - generic: "{ }"
+        - generic: < />
+        - generic: "[ ]"
+        - generic: ( )
+        - generic: =>
+        - generic: //
+        - generic: "&&"
+        - generic: "||"
+        - generic: async
+        - generic: await
+        - generic: goroutine
+        - generic: kafka
+        - generic: raft
+        - generic: vector
+        - generic: loki
+        - generic: grpc
+        - generic: redis
+        - generic: etcd
+      - paragraph [ref=e52]:
+        - generic [ref=e53]: Every app you love runs on infrastructure
+        - text: most people never think about. I think about it every day.
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]: 0+
+          - generic [ref=e57]: Years of engineering
+        - generic [ref=e58]:
+          - generic [ref=e59]: "0"
+          - generic [ref=e60]: Graduate degrees
+        - generic [ref=e61]:
+          - generic [ref=e62]: "0"
+          - generic [ref=e63]: Systems shipped
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - img "Siddhant Deshpande" [ref=e68]
+        - generic [ref=e70]: SD
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - paragraph [ref=e73]: The Engineer
+          - paragraph [ref=e74]: Siddhant Deshpande
+          - paragraph [ref=e75]: I'm a distributed systems engineer who obsesses over the invisible layer that makes software work at scale. I've shipped production systems, built AI-powered tooling, and I'm always working on something that solves a real problem.
+        - generic [ref=e76]:
+          - generic [ref=e77]: Distributed Systems
+          - generic [ref=e78]: RAG Pipelines
+          - generic [ref=e79]: TypeScript
+          - generic [ref=e80]: Python
+          - generic [ref=e81]: Go
+          - generic [ref=e82]: Vector DBs
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e87]: Chapter 01
+        - heading "Semantic Log Search" [level=2] [ref=e88]
+        - paragraph [ref=e89]: Find anything in your logs. Just ask.
+      - generic [ref=e90]:
+        - img [ref=e91]:
+          - generic [ref=e93]: Loki Logs
+          - generic [ref=e95]: Vector DB
+          - generic [ref=e96]: embeddings
+          - generic [ref=e98]: Natural Language
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: Logs emitted to Loki are embedded and stored in a vector database. A RAG pipeline lets engineers query them in plain English — no more grep marathons.
+          - generic [ref=e101]:
+            - generic [ref=e102]: Python
+            - generic [ref=e103]: Loki
+            - generic [ref=e104]: Vector DB
+            - generic [ref=e105]: RAG
+            - generic [ref=e106]: LLM
+          - generic [ref=e107]: ● shipped
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - generic [ref=e111]: Chapter 02
+        - heading "Surprise Meal" [level=2] [ref=e112]
+        - paragraph [ref=e113]: Subscriptions that actually delight.
+      - generic [ref=e114]:
+        - generic [ref=e118]:
+          - generic:
+            - paragraph: Balance
+            - paragraph: ₹1,000
+          - generic:
+            - paragraph: Today's surprise
+            - paragraph: 🍜 Ramen from Ichiban
+            - paragraph: Delivered in 30 min
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: Load a balance, answer a few questions about your taste, and let the system order you a surprising meal from a different restaurant every time. No decision fatigue.
+          - generic [ref=e121]:
+            - generic [ref=e122]: React Native
+            - generic [ref=e123]: Node.js
+            - generic [ref=e124]: AI
+            - generic [ref=e125]: Payment API
+          - generic [ref=e126]: ◉ in progress
+    - generic [ref=e128]:
+      - generic [ref=e129]:
+        - generic [ref=e130]: Chapter 03
+        - heading "NFT Display Monitor" [level=2] [ref=e131]
+        - paragraph [ref=e132]: Where crypto meets the physical world.
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - img [ref=e135]
+          - generic [ref=e142]: →
+          - paragraph [ref=e146]: "NFT #4821"
+        - generic [ref=e147]:
+          - paragraph [ref=e148]: Scan a QR code, upload your photo, and watch your NFT materialise on a physical display screen. Bridges on-chain assets with the real world.
+          - generic [ref=e149]:
+            - generic [ref=e150]: Crypto
+            - generic [ref=e151]: QR
+            - generic [ref=e152]: WebSockets
+            - generic [ref=e153]: Display
+          - generic [ref=e154]: ● shipped
+    - generic [ref=e156]:
+      - paragraph [ref=e157]: The Journey
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - text: "2019"
+          - heading "BS Computer Science" [level=3] [ref=e160]
+          - paragraph [ref=e161]: University name here
+          - generic [ref=e162]: education
+        - generic [ref=e163]:
+          - text: "2021"
+          - heading "Software Engineer" [level=3] [ref=e164]
+          - paragraph [ref=e165]: Company name here
+          - generic [ref=e166]: work
+        - generic [ref=e167]:
+          - text: "2023"
+          - heading "MS Distributed Systems" [level=3] [ref=e168]
+          - paragraph [ref=e169]: University name here
+          - generic [ref=e170]: education
+        - generic [ref=e171]:
+          - text: "2024"
+          - heading "Senior Engineer" [level=3] [ref=e172]
+          - paragraph [ref=e173]: Company name here
+          - generic [ref=e174]: work
+        - generic [ref=e176]: Present →
+    - generic [ref=e177]:
+      - heading "The next chapter needs a co-author." [level=2] [ref=e178]
+      - generic [ref=e179]:
+        - link "siddhantdeshpande3@gmail.com" [ref=e180] [cursor=pointer]:
+          - /url: mailto:siddhantdeshpande3@gmail.com
+        - generic [ref=e181]:
+          - link "GitHub" [ref=e182] [cursor=pointer]:
+            - /url: https://github.com/yourusername
+          - link "LinkedIn" [ref=e183] [cursor=pointer]:
+            - /url: https://linkedin.com/in/yourusername
+      - link "Let's talk →" [ref=e184] [cursor=pointer]:
+        - /url: mailto:siddhantdeshpande3@gmail.com
+      - paragraph [ref=e185]: 2026 · Siddhant Deshpande
+  - alert [ref=e186]

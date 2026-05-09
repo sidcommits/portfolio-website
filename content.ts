@@ -15,6 +15,17 @@ export interface Project {
   link: string | null
 }
 
+export interface ExperienceItem {
+  role: string
+  company: string
+  period: string
+  location: string
+  type: 'work' | 'education'
+  headline: string
+  impact: string
+  impactLabel: string
+}
+
 export interface TimelineItem {
   year: string
   label: string
@@ -26,15 +37,16 @@ export interface Content {
   hero: { name: string; title: string; tagline: string }
   stakes: { statement: string; stats: Stat[] }
   about: { photo: string; bio: string; tags: string[] }
+  experience: ExperienceItem[]
   projects: Project[]
   timeline: TimelineItem[]
-  contact: { email: string; github: string; linkedin: string }
+  contact: { email: string; github: string; linkedin: string; domain: string }
 }
 
 export const content: Content = {
   hero: {
     name: 'Siddhant Deshpande',
-    title: 'Distributed Systems Engineer',
+    title: 'Backend · Distributed Systems · AI',
     tagline: 'I build the infrastructure that keeps things running at scale.',
   },
 
@@ -42,17 +54,60 @@ export const content: Content = {
     statement:
       'Every app you love runs on infrastructure most people never think about. I think about it every day.',
     stats: [
-      { value: 4, suffix: '+', label: 'Years of engineering' },
-      { value: 2, suffix: '',  label: 'Graduate degrees' },
-      { value: 3, suffix: '',  label: 'Systems shipped' },
+      { value: 3,  suffix: '+', label: 'Years of engineering' },
+      { value: 2,  suffix: '',  label: 'Graduate degrees' },
+      { value: 40, suffix: '%', label: 'Avg latency improvement' },
     ],
   },
 
   about: {
     photo: '/images/sid.jpg',
-    bio: "I'm a distributed systems engineer who obsesses over the invisible layer that makes software work at scale. I've shipped production systems, built AI-powered tooling, and I'm always working on something that solves a real problem.",
-    tags: ['Distributed Systems', 'RAG Pipelines', 'TypeScript', 'Python', 'Go', 'Vector DBs'],
+    bio: "Backend engineer with 3+ years building scalable Python/FastAPI services, cloud-native architectures, and DevOps pipelines on AWS. MSc in Distributed Systems Engineering from TU Dresden — with research in ML-based anomaly detection. I care deeply about the layer most people never see.",
+    tags: ['Python', 'FastAPI', 'AWS', 'Distributed Systems', 'RAG', 'OpenTelemetry', 'Kubernetes', 'Docker'],
   },
+
+  experience: [
+    {
+      role: 'Backend Software Engineer',
+      company: 'Constellr GmbH',
+      period: 'Aug 2024 – Feb 2026',
+      location: 'Freiburg, DE (Remote)',
+      type: 'work',
+      headline: 'Reduced deployment effort by 80% with GitHub Actions automation for AWS Lambda.',
+      impact: '80',
+      impactLabel: '% less manual deployment',
+    },
+    {
+      role: 'Student Research Assistant',
+      company: 'Fraunhofer IVI',
+      period: 'Mar 2023 – May 2024',
+      location: 'Dresden, DE',
+      type: 'work',
+      headline: 'Cut regression issues by 60% with ML model integration tests for battery simulations.',
+      impact: '60',
+      impactLabel: '% fewer regressions',
+    },
+    {
+      role: 'Associate Analyst — SAP Backend',
+      company: 'Deloitte USI',
+      period: 'Sep 2021 – Sep 2022',
+      location: 'Pune, IN',
+      type: 'work',
+      headline: 'Saved 70% of monthly manual effort with inventory automation in ABAP.',
+      impact: '70',
+      impactLabel: '% manual effort saved',
+    },
+    {
+      role: 'Full-Stack Software Engineer',
+      company: 'Appsay.co',
+      period: 'Jul 2020 – Jan 2021',
+      location: 'Pune, IN',
+      type: 'work',
+      headline: 'Boosted API response time by 35% using Prometheus + Grafana to find and fix a backend bottleneck.',
+      impact: '35',
+      impactLabel: '% faster API responses',
+    },
+  ],
 
   projects: [
     {
@@ -81,22 +136,25 @@ export const content: Content = {
       tagline: 'Where crypto meets the physical world.',
       description:
         'Scan a QR code, upload your photo, and watch your NFT materialise on a physical display screen. Bridges on-chain assets with the real world.',
-      stack: ['Crypto', 'QR', 'WebSockets', 'Display'],
+      stack: ['Solidity', 'WebSockets', 'QR', 'PWA'],
       status: 'shipped',
       link: null,
     },
   ],
 
   timeline: [
-    { year: '2019', label: 'BS Computer Science', sublabel: 'University name here', type: 'education' },
-    { year: '2021', label: 'Software Engineer', sublabel: 'Company name here', type: 'work' },
-    { year: '2023', label: 'MS Distributed Systems', sublabel: 'University name here', type: 'education' },
-    { year: '2024', label: 'Senior Engineer', sublabel: 'Company name here', type: 'work' },
+    { year: '2018', label: 'BSc Computer Science', sublabel: 'Fergusson College, Pune · CGPA 9.88', type: 'education' },
+    { year: '2020', label: 'Full-Stack Engineer', sublabel: 'Appsay.co · Pune', type: 'work' },
+    { year: '2021', label: 'SAP Backend Analyst', sublabel: 'Deloitte USI · Pune', type: 'work' },
+    { year: '2022', label: 'MSc Distributed Systems', sublabel: 'TU Dresden · Grade 1.9', type: 'education' },
+    { year: '2023', label: 'Research Assistant', sublabel: 'Fraunhofer IVI · Dresden', type: 'work' },
+    { year: '2024', label: 'Backend Engineer', sublabel: 'Constellr GmbH · Freiburg', type: 'work' },
   ],
 
   contact: {
-    email: 'siddhantdeshpande3@gmail.com',
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
+    email: 'siddhantdeshpande07@gmail.com',
+    github: 'https://github.com/sidcommits',
+    linkedin: 'https://linkedin.com/in/sideshpande',
+    domain: 'siddhantdeshpande.com',
   },
 }
