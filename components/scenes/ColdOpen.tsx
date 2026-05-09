@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from '@/lib/gsap'
 import { content } from '@/content'
+import FloatingElements from '@/components/ui/FloatingElements'
 
 export default function ColdOpen() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -58,6 +59,7 @@ export default function ColdOpen() {
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: 'url("/images/grain.png")', backgroundRepeat: 'repeat' }}
       />
+      <FloatingElements count={22} />
 
       <div className="flex flex-col items-center gap-6 text-center px-6">
         <h1
