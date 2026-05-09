@@ -13,6 +13,7 @@ const config: Config = {
         ink:    'var(--ink)',
         orange: 'var(--orange)',
         gray:   'var(--gray)',
+        white:  'var(--white)',
       },
       fontFamily: {
         display: ['var(--font-display)'],
