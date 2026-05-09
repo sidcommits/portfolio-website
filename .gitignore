@@ -3,6 +3,12 @@
 CLAUDE.md
 docs/
 
+# Playwright
+.playwright-mcp/
+
+# Screenshots
+*.png
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
