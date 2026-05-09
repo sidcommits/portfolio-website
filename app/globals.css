@@ -3,25 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream:   #FAF8F5;
+  --ink:     #0D0D0D;
+  --orange:  #FF4500;
+  --gray:    #6B6B6B;
+  --white:   #FFFFFF;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  cursor: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+/* Hide default scrollbar — Lenis manages scroll */
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; }
+
+/* Orange accent utility */
+.accent { color: var(--orange); }
+.accent-bg { background: var(--orange); }
+.accent-border { border-color: var(--orange); }
