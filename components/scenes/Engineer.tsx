@@ -52,7 +52,7 @@ export default function Engineer() {
     <section
       ref={sectionRef}
       id="engineer"
-      className="flex items-center justify-center w-full h-screen bg-cream px-8"
+      className="flex items-center justify-center w-full h-screen px-8"
     >
       <div className="grid grid-cols-2 gap-20 max-w-5xl w-full items-center">
         <div

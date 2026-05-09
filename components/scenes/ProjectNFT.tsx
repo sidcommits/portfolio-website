@@ -59,7 +59,7 @@ export default function ProjectNFT() {
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col items-center justify-center w-full h-screen bg-cream px-8"
+      className="flex flex-col items-center justify-center w-full h-screen px-8"
     >
       <div ref={titleRef} className="w-full max-w-5xl mb-10 opacity-0">
         <span className="font-mono text-xs tracking-widest text-orange uppercase">Chapter {project.chapter}</span>

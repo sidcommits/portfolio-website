@@ -55,7 +55,7 @@ export default function ProjectLog() {
     <section
       ref={sectionRef}
       id="projects"
-      className="flex flex-col items-center justify-center w-full h-screen bg-cream px-8"
+      className="flex flex-col items-center justify-center w-full h-screen px-8"
     >
       <div ref={titleRef} className="w-full max-w-5xl mb-12 opacity-0">
         <div className="flex items-baseline gap-4">

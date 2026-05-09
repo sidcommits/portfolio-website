@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from '@/lib/gsap'
 import { content } from '@/content'
 import Counter from '@/components/ui/Counter'
-import FloatingElements from '@/components/ui/FloatingElements'
 
 export default function Stakes() {
   const sectionRef   = useRef<HTMLElement>(null)
@@ -46,9 +45,8 @@ export default function Stakes() {
     <section
       ref={sectionRef}
       id="stakes"
-      className="relative flex flex-col items-center justify-center w-full h-screen bg-cream px-6"
+      className="flex flex-col items-center justify-center w-full h-screen px-6"
     >
-      <FloatingElements count={18} />
       <p
         ref={statementRef}
         className="font-display font-bold text-[clamp(1.5rem,4vw,3rem)] text-center text-ink max-w-4xl leading-tight opacity-0"

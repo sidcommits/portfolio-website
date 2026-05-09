@@ -36,7 +36,7 @@ export default function Timeline() {
     <section
       ref={sectionRef}
       id="timeline"
-      className="flex flex-col justify-center w-full h-screen bg-cream overflow-hidden"
+      className="flex flex-col justify-center w-full h-screen overflow-hidden"
     >
       <p className="font-mono text-xs tracking-widest uppercase text-orange px-16 mb-8">
         The Journey

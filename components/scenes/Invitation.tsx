@@ -38,7 +38,7 @@ export default function Invitation() {
     <section
       ref={sectionRef}
       id="contact"
-      className="flex flex-col items-center justify-center w-full h-screen bg-cream px-8 text-center"
+      className="flex flex-col items-center justify-center w-full h-screen px-8 text-center"
     >
       <h2
         ref={headlineRef}

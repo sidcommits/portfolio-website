@@ -7,6 +7,7 @@ import '@fontsource/jetbrains-mono/400.css'
 import './globals.css'
 import LenisProvider from '@/components/ui/LenisProvider'
 import Cursor from '@/components/ui/Cursor'
+import RotatingBackground from '@/components/ui/RotatingBackground'
 
 export const metadata: Metadata = {
   title: 'Siddhant Deshpande — Distributed Systems Engineer',
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <LenisProvider>
+          <RotatingBackground />
           <Cursor />
           {children}
         </LenisProvider>

@@ -40,7 +40,7 @@ export default function ProjectMeal() {
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col items-center justify-center w-full h-screen bg-cream px-8"
+      className="flex flex-col items-center justify-center w-full h-screen px-8"
     >
       <div ref={titleRef} className="w-full max-w-5xl mb-10 opacity-0">
         <span className="font-mono text-xs tracking-widest text-orange uppercase">Chapter {project.chapter}</span>
@@ -52,7 +52,7 @@ export default function ProjectMeal() {
 
       <div className="grid grid-cols-2 gap-16 max-w-5xl w-full items-center">
         <div ref={phoneRef} className="relative flex flex-col items-center gap-4 opacity-0" style={{ perspective: 800 }}>
-          <div className="relative w-52 border-4 border-ink rounded-[2rem] bg-cream overflow-hidden shadow-2xl">
+          <div className="relative w-52 border-4 border-ink rounded-[2rem] overflow-hidden shadow-2xl">
             <div className="h-4 bg-ink rounded-b-xl mx-auto w-20" />
             <div className="flex flex-col gap-3 p-4 min-h-[320px]">
               <div ref={card1Ref} className="bg-orange rounded-xl p-3 text-cream opacity-0" style={{ transformStyle: 'preserve-3d' }}>
