@@ -4,10 +4,10 @@ module.exports = {
       name: 'portfolio',
       script: 'node_modules/.bin/next',
       args: 'start',
-      cwd: '/path/to/portfolio-website',
+      cwd: '/var/www/portfolio-website',
       env: {
         NODE_ENV: 'production',
-        PORT: 3000,
+        PORT: 6767,
       },
       instances: 1,
       autorestart: true,
