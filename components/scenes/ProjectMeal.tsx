@@ -15,32 +15,55 @@ export default function ProjectMeal() {
   const detailsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=150%',
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      })
+    const mm = gsap.matchMedia()
 
-      tl.fromTo(titleRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
-      tl.fromTo(phoneRef.current, { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.2')
-      tl.fromTo(card1Ref.current, { rotateY: 90, opacity: 0 }, { rotateY: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2')
-      tl.fromTo(card2Ref.current, { rotateY: 90, opacity: 0 }, { rotateY: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.1')
-      tl.fromTo(detailsRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, '-=0.2')
-    }, sectionRef)
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=150%',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        })
+        tl.fromTo(titleRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+        tl.fromTo(phoneRef.current, { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.2')
+        tl.fromTo(card1Ref.current, { rotateY: 90, opacity: 0 }, { rotateY: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2')
+        tl.fromTo(card2Ref.current, { rotateY: 90, opacity: 0 }, { rotateY: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.1')
+        tl.fromTo(detailsRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, '-=0.2')
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-    return () => ctx.revert()
+    mm.add('(max-width: 767px)', () => {
+      const ctx = gsap.context(() => {
+        gsap.set([card1Ref.current, card2Ref.current], { opacity: 1, rotateY: 0 })
+        gsap.fromTo(titleRef.current, { opacity: 0, y: 24 }, {
+          opacity: 1, y: 0, duration: 0.5,
+          scrollTrigger: { trigger: titleRef.current, start: 'top 88%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(phoneRef.current, { opacity: 0, y: 30 }, {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.1,
+          scrollTrigger: { trigger: phoneRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(detailsRef.current, { opacity: 0, y: 20 }, {
+          opacity: 1, y: 0, duration: 0.5,
+          scrollTrigger: { trigger: detailsRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+      }, sectionRef)
+      return () => ctx.revert()
+    })
+
+    return () => mm.revert()
   }, [])
 
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col items-center justify-center w-full h-screen px-8"
+      className="flex flex-col items-center justify-center w-full min-h-screen md:h-screen px-6 md:px-8 py-20 md:py-0"
     >
       <div ref={titleRef} className="w-full max-w-5xl mb-10 opacity-0">
         <span className="font-mono text-xs tracking-widest text-orange uppercase">Chapter {project.chapter}</span>
@@ -50,7 +73,7 @@ export default function ProjectMeal() {
         <p className="font-body text-gray mt-2">{project.tagline}</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-16 max-w-5xl w-full items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-5xl w-full items-center">
         <div ref={phoneRef} className="relative flex flex-col items-center gap-4 opacity-0" style={{ perspective: 800 }}>
           <div className="relative w-52 border-4 border-ink rounded-[2rem] overflow-hidden shadow-2xl">
             <div className="h-4 bg-ink rounded-b-xl mx-auto w-20" />

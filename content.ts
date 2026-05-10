@@ -49,7 +49,7 @@ export const content: Content = {
   hero: {
     name: 'Siddhant Deshpande',
     title: 'Backend · Distributed Systems · AI',
-    tagline: 'I build the infrastructure that keeps things running at scale.',
+    tagline: 'I write code that ships — and stays shipped.',
   },
 
   stakes: {
@@ -58,7 +58,7 @@ export const content: Content = {
     stats: [
       { value: 3, suffix: '+', label: 'Years of engineering' },
       { value: 2, suffix: '',  label: 'Graduate degrees' },
-      { value: 1, suffix: '',  label: 'arXiv preprint' },
+      { value: 1, suffix: '',  label: 'Research Article' },
     ],
   },
 
@@ -114,18 +114,18 @@ export const content: Content = {
   projects: [
     {
       chapter: '01',
-      title: 'Semantic Log Search',
+      title: 'LogIQ',
       tagline: 'Find anything in your logs. Just ask.',
       description:
         'Logs emitted to Loki are embedded and stored in a vector database. A RAG pipeline lets engineers query them in plain English — no more grep marathons.',
       stack: ['Python', 'Loki', 'Vector DB', 'RAG', 'LLM'],
       status: 'shipped',
       link: null,
-      github: 'https://github.com/sidcommits/semantic-log-search',
+      github: 'https://github.com/sidcommits/log-iq',
       website: null,
     },
     {
-      chapter: '02',
+      chapter: '04',
       title: 'Surprise Meal',
       tagline: 'Subscriptions that actually delight.',
       description:
@@ -137,6 +137,18 @@ export const content: Content = {
       website: null,
     },
     {
+      chapter: '02',
+      title: 'ECG Signal Tampering Detection',
+      tagline: '99.9% accuracy catching tampering in wireless ECG.',
+      description:
+        'MSc thesis at TU Dresden. Designed and trained 7+ deep learning architectures — CNNs, ResNets, and a novel hybrid CNN-Transformer — to detect intelligent tampering in wireless ECG signals. Best model (FeatCNN-TransCNN) hit 99.9%+ accuracy across 6 tampering scenarios; Siamese variant reached 100% F1 on open-set person verification. Full ML pipeline: CWT preprocessing, training, evaluation, and benchmarking across 54 participants.',
+      stack: ['Python', 'TensorFlow', 'Keras', 'PyWavelets', 'NumPy', 'SciPy', 'scikit-learn'],
+      status: 'shipped',
+      link: 'https://arxiv.org/abs/2507.06402',
+      github: 'https://github.com/sidcommits/transformer-ecg-tampering',
+      website: null,
+    },
+    {
       chapter: '03',
       title: 'NFT Display Monitor',
       tagline: 'Where crypto meets the physical world.',
@@ -145,7 +157,7 @@ export const content: Content = {
       stack: ['Solidity', 'WebSockets', 'QR', 'PWA'],
       status: 'shipped',
       link: null,
-      github: 'https://github.com/sidcommits/nft-display-monitor',
+      github: 'https://github.com/sidcommits/nft-display-client',
       website: null,
     },
   ],

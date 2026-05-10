@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from '@/lib/gsap'
 import { content } from '@/content'
+import Image from 'next/image'
 
 const CONTACT_LINKS = [
   {
@@ -78,15 +79,20 @@ export default function Invitation() {
     <section
       ref={sectionRef}
       id="contact"
-      className="flex flex-col items-center justify-center w-full h-screen px-8"
+      className="flex flex-col items-center justify-center w-full min-h-screen md:h-screen px-6 md:px-8 py-20 md:py-0"
     >
       {/* Profile card */}
       <div ref={profileRef} className="flex flex-col items-center gap-4 mb-12 opacity-0">
         {/* Avatar */}
-        <div className="w-20 h-20 rounded-full border-2 border-orange/30 bg-ink flex items-center justify-center">
-          <span className="font-display font-bold text-2xl text-cream">
-            {content.hero.name.split(' ').map(n => n[0]).join('')}
-          </span>
+        <div className="w-20 h-20 rounded-full border-2 border-orange/30 overflow-hidden relative">
+          <Image
+            src={content.about.photo}
+            alt={content.hero.name}
+            fill
+            unoptimized
+            className="object-cover"
+            style={{ objectPosition: '50% 32%' }}
+          />
         </div>
         {/* Name + role */}
         <div className="text-center">
@@ -98,7 +104,7 @@ export default function Invitation() {
       </div>
 
       {/* Contact tiles */}
-      <div ref={cardsRef} className="flex gap-4 mb-10">
+      <div ref={cardsRef} className="flex flex-wrap justify-center gap-4 mb-10">
         {CONTACT_LINKS.map(({ label, sub, href, icon }) => (
           <a
             key={label}
@@ -106,7 +112,7 @@ export default function Invitation() {
             href={href}
             target={href.startsWith('mailto') ? undefined : '_blank'}
             rel="noopener noreferrer"
-            className="opacity-0 flex flex-col items-center gap-3 w-48 px-6 py-5 border border-ink/12 rounded-2xl hover:border-orange/50 hover:bg-orange/[0.03] transition-all duration-200 group"
+            className="opacity-0 flex flex-col items-center gap-3 w-40 md:w-48 px-4 md:px-6 py-5 border border-ink/12 rounded-2xl hover:border-orange/50 hover:bg-orange/[0.03] transition-all duration-200 group"
             data-cursor-grow=""
           >
             <span className="text-gray group-hover:text-orange transition-colors duration-200">

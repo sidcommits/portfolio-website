@@ -10,49 +10,64 @@ export default function ColdOpen() {
   const ruleRef    = useRef<SVGLineElement>(null)
   const titleRef   = useRef<HTMLParagraphElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
-  const scrollRef  = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=150%',
-          pin: true,
-          anticipatePin: 1,
-        },
-      })
+    const mm = gsap.matchMedia()
 
-      tl.fromTo(nameRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=110%',
+            pin: true,
+            anticipatePin: 1,
+          },
+        })
+        tl.fromTo(nameRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
+        if (ruleRef.current) {
+          const len = (ruleRef.current as unknown as SVGGeometryElement).getTotalLength?.() ?? 400
+          gsap.set(ruleRef.current, { strokeDasharray: len, strokeDashoffset: len })
+          tl.to(ruleRef.current, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, '-=0.3')
+        }
+        const titleEl = titleRef.current
+        if (titleEl) {
+          titleEl.innerHTML = content.hero.title
+            .split('')
+            .map((ch) => `<span style="opacity:0;display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
+            .join('')
+          tl.to(titleEl.querySelectorAll('span'), { opacity: 1, stagger: 0.04, duration: 0.01 }, '-=0.1')
+        }
+        tl.fromTo(taglineRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.2')
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      if (ruleRef.current) {
-        const len = (ruleRef.current as unknown as SVGGeometryElement).getTotalLength?.() ?? 400
-        gsap.set(ruleRef.current, { strokeDasharray: len, strokeDashoffset: len })
-        tl.to(ruleRef.current, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, '-=0.3')
-      }
+    mm.add('(max-width: 767px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ delay: 0.3 })
+        tl.fromTo(nameRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+        if (ruleRef.current) {
+          const len = (ruleRef.current as unknown as SVGGeometryElement).getTotalLength?.() ?? 400
+          gsap.set(ruleRef.current, { strokeDasharray: len, strokeDashoffset: len })
+          tl.to(ruleRef.current, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.inOut' }, '-=0.2')
+        }
+        const titleEl = titleRef.current
+        if (titleEl) titleEl.textContent = content.hero.title
+        tl.fromTo(titleRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4 }, '-=0.1')
+        tl.fromTo(taglineRef.current, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.1')
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      const titleEl = titleRef.current
-      if (titleEl) {
-        titleEl.innerHTML = content.hero.title
-          .split('')
-          .map((ch) => `<span style="opacity:0;display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
-          .join('')
-        tl.to(titleEl.querySelectorAll('span'), { opacity: 1, stagger: 0.04, duration: 0.01 }, '-=0.1')
-      }
-
-      tl.fromTo(taglineRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.2')
-      tl.fromTo(scrollRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4 })
-      gsap.to(scrollRef.current, { y: 8, repeat: -1, yoyo: true, duration: 0.9, ease: 'sine.inOut' })
-    }, sectionRef)
-
-    return () => ctx.revert()
+    return () => mm.revert()
   }, [])
 
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden"
+      className="relative flex flex-col items-center justify-center w-full min-h-screen md:h-screen overflow-hidden"
     >
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -73,7 +88,7 @@ export default function ColdOpen() {
 
         <p
           ref={titleRef}
-          className="font-mono text-sm tracking-[0.2em] uppercase text-gray"
+          className="font-mono text-base md:text-xl font-bold tracking-[0.2em] uppercase text-gray"
         />
 
         <p
@@ -84,19 +99,6 @@ export default function ColdOpen() {
         </p>
       </div>
 
-      <div
-        ref={scrollRef}
-        className="absolute bottom-8 flex flex-col items-center gap-2 opacity-0"
-      >
-        <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-gray">
-          yes, keep scrolling
-        </span>
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-orange text-lg leading-none">↓</span>
-          <span className="text-orange/50 text-sm leading-none">↓</span>
-          <span className="text-orange/20 text-xs leading-none">↓</span>
-        </div>
-      </div>
     </section>
   )
 }

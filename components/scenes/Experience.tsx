@@ -206,42 +206,54 @@ export default function Experience() {
   const cardsRef    = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = cardsRef.current?.querySelectorAll('[data-card]') ?? []
+    const mm = gsap.matchMedia()
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=220%',
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      })
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const cards = cardsRef.current?.querySelectorAll('[data-card]') ?? []
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=220%',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        })
+        tl.fromTo(headlineRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' })
+        cards.forEach((card, i) => {
+          tl.fromTo(card, { opacity: 0, x: 60, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.4, ease: 'power2.out' }, i === 0 ? '-=0.1' : '-=0.15')
+        })
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      tl.fromTo(headlineRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
-      )
+    mm.add('(max-width: 767px)', () => {
+      const ctx = gsap.context(() => {
+        const cards = cardsRef.current?.querySelectorAll('[data-card]') ?? []
+        gsap.fromTo(headlineRef.current, { opacity: 0, y: 30 }, {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+          scrollTrigger: { trigger: headlineRef.current, start: 'top 88%', toggleActions: 'play none none none' },
+        })
+        cards.forEach((card, i) => {
+          gsap.fromTo(card, { opacity: 0, y: 30 }, {
+            opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: i * 0.08,
+            scrollTrigger: { trigger: card, start: 'top 92%', toggleActions: 'play none none none' },
+          })
+        })
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      cards.forEach((card, i) => {
-        tl.fromTo(card,
-          { opacity: 0, x: 60, scale: 0.95 },
-          { opacity: 1, x: 0, scale: 1, duration: 0.4, ease: 'power2.out' },
-          i === 0 ? '-=0.1' : '-=0.15'
-        )
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
+    return () => mm.revert()
   }, [])
 
   return (
     <section
       ref={sectionRef}
       id="experience"
-      className="flex flex-col items-center justify-center w-full h-screen px-8 py-16"
+      className="flex flex-col items-center justify-center w-full min-h-screen md:h-screen px-6 md:px-8 py-20 md:py-16"
     >
       {/* Headline */}
       <div ref={headlineRef} className="w-full max-w-5xl mb-10 opacity-0">
@@ -253,14 +265,14 @@ export default function Experience() {
       </div>
 
       {/* Cards */}
-      <div ref={cardsRef} className="grid grid-cols-2 gap-5 w-full max-w-5xl">
+      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-5xl">
         {content.experience.map((item, i) => {
           const Illustration = ILLUSTRATIONS[i]
           return (
             <div
               key={i}
               data-card=""
-              className="opacity-0 flex flex-col border border-ink/10 rounded-2xl p-5 hover:border-orange/30 transition-colors duration-300 group"
+              className="opacity-0 flex flex-col border border-ink/10 rounded-2xl p-7 hover:border-orange/30 transition-colors duration-300 group"
             >
               {/* Illustration */}
               <div className="mb-4">
@@ -268,19 +280,19 @@ export default function Experience() {
               </div>
 
               {/* Company */}
-              <p className="font-display font-bold text-base text-ink leading-tight group-hover:text-orange transition-colors duration-200">
+              <p className="font-display font-bold text-xl text-ink leading-tight group-hover:text-orange transition-colors duration-200">
                 {item.company}
               </p>
 
               {/* Role */}
-              <p className="font-mono text-[10px] text-gray mt-1 leading-relaxed">
+              <p className="font-mono text-xs text-gray mt-1 leading-relaxed">
                 {item.role}
               </p>
 
               {/* Period + location */}
               <div className="mt-auto pt-4 border-t border-ink/8 flex flex-col gap-0.5">
-                <p className="font-mono text-[9px] text-gray/70">{item.period}</p>
-                <p className="font-mono text-[9px] text-gray/50">{item.location}</p>
+                <p className="font-mono text-[11px] text-gray/70">{item.period}</p>
+                <p className="font-mono text-[11px] text-gray/50">{item.location}</p>
               </div>
             </div>
           )

@@ -12,40 +12,49 @@ export default function Stakes() {
   const [counting, setCounting] = useState(false)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=100%',
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          onEnter: () => setCounting(true),
-        },
-      })
+    const mm = gsap.matchMedia()
 
-      tl.fromTo(
-        statementRef.current,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }
-      )
-      tl.fromTo(
-        statsRef.current,
-        { opacity: 0, y: 32 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
-        '-=0.2'
-      )
-    }, sectionRef)
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=100%',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+            onEnter: () => setCounting(true),
+          },
+        })
+        tl.fromTo(statementRef.current, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' })
+        tl.fromTo(statsRef.current, { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2')
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-    return () => ctx.revert()
+    mm.add('(max-width: 767px)', () => {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(statementRef.current, { opacity: 0, y: 24 }, {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+          scrollTrigger: { trigger: statementRef.current, start: 'top 88%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(statsRef.current, { opacity: 0, y: 20 }, {
+          opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: 0.15,
+          scrollTrigger: { trigger: statsRef.current, start: 'top 92%', toggleActions: 'play none none none', onEnter: () => setCounting(true) },
+        })
+      }, sectionRef)
+      return () => ctx.revert()
+    })
+
+    return () => mm.revert()
   }, [])
 
   return (
     <section
       ref={sectionRef}
       id="stakes"
-      className="flex flex-col items-center justify-center w-full h-screen px-6"
+      className="flex flex-col items-center justify-center w-full min-h-screen md:h-screen px-6 py-20 md:py-0"
     >
       <p
         ref={statementRef}
@@ -60,7 +69,7 @@ export default function Stakes() {
         )}
       </p>
 
-      <div ref={statsRef} className="flex gap-16 mt-16 opacity-0">
+      <div ref={statsRef} className="flex flex-wrap justify-center gap-10 md:gap-16 mt-10 md:mt-16 opacity-0">
         {content.stakes.stats.map((stat) => (
           <div key={stat.label} className="flex flex-col items-center gap-2">
             <span className="font-display font-bold text-[clamp(3rem,8vw,6rem)] text-ink leading-none">

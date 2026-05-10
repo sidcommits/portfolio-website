@@ -50,6 +50,8 @@ export default function RotatingBackground() {
       phaseY: Math.random() * Math.PI * 2,
     }))
 
+    const isMobile = window.innerWidth < 768
+
     // Per-word base opacity (stored for fade calculations)
     const baseOpacities: number[] = []
 
@@ -58,13 +60,13 @@ export default function RotatingBackground() {
       const p = params[i]
       const x = p.baseX + p.ampX * Math.sin(p.phaseX)
       const y = p.baseY + p.ampY * Math.cos(p.phaseY)
-      const opacity = 0.17 + Math.random() * 0.06
+      const opacity = isMobile ? (0.05 + Math.random() * 0.03) : (0.17 + Math.random() * 0.06)
       baseOpacities.push(opacity)
       gsap.set(el, {
         left: `${x}vw`,
         top:  `${y}vh`,
         opacity,
-        fontSize: `${13 + Math.random() * 3}px`,
+        fontSize: isMobile ? `${7 + Math.random() * 2}px` : `${13 + Math.random() * 3}px`,
       })
     })
 

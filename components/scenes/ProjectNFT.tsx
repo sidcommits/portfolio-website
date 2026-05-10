@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { gsap } from '@/lib/gsap'
 import { content } from '@/content'
 
-const project = content.projects[2]
+const project = content.projects[3]
 
 export default function ProjectNFT() {
   const sectionRef  = useRef<HTMLElement>(null)
@@ -14,52 +14,58 @@ export default function ProjectNFT() {
   const detailsRef  = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=120%',
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      })
+    const mm = gsap.matchMedia()
 
-      tl.fromTo(titleRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=120%',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        })
+        tl.fromTo(titleRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+        const qrPaths = Array.from(qrRef.current?.querySelectorAll('path') ?? []) as SVGPathElement[]
+        qrPaths.forEach((path) => { const len = path.getTotalLength?.() ?? 100; gsap.set(path, { strokeDasharray: len, strokeDashoffset: len }) })
+        tl.to(qrPaths, { strokeDashoffset: 0, stagger: 0.05, duration: 0.3 }, '-=0.2')
+        tl.fromTo(frameRef.current, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.3)' }, '-=0.1')
+        tl.to(frameRef.current, { boxShadow: '0 0 40px 12px rgba(255,69,0,0.35)', repeat: -1, yoyo: true, duration: 1.2, ease: 'sine.inOut' })
+        tl.fromTo(detailsRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, '-=0.4')
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      const qrPaths = Array.from(qrRef.current?.querySelectorAll('path') ?? []) as SVGPathElement[]
-      qrPaths.forEach((path) => {
-        const len = path.getTotalLength?.() ?? 100
-        gsap.set(path, { strokeDasharray: len, strokeDashoffset: len })
-      })
-      tl.to(qrPaths, { strokeDashoffset: 0, stagger: 0.05, duration: 0.3 }, '-=0.2')
+    mm.add('(max-width: 767px)', () => {
+      const ctx = gsap.context(() => {
+        const qrPaths = Array.from(qrRef.current?.querySelectorAll('path') ?? []) as SVGPathElement[]
+        qrPaths.forEach((path) => { const len = path.getTotalLength?.() ?? 100; gsap.set(path, { strokeDasharray: len, strokeDashoffset: 0 }) })
+        gsap.fromTo(titleRef.current, { opacity: 0, y: 24 }, {
+          opacity: 1, y: 0, duration: 0.5,
+          scrollTrigger: { trigger: titleRef.current, start: 'top 88%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(frameRef.current, { opacity: 0, scale: 0.85 }, {
+          opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.3)', delay: 0.1,
+          scrollTrigger: { trigger: frameRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(detailsRef.current, { opacity: 0, y: 20 }, {
+          opacity: 1, y: 0, duration: 0.5,
+          scrollTrigger: { trigger: detailsRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      tl.fromTo(
-        frameRef.current,
-        { opacity: 0, scale: 0.85 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.3)' },
-        '-=0.1'
-      )
-
-      tl.to(frameRef.current, {
-        boxShadow: '0 0 40px 12px rgba(255,69,0,0.35)',
-        repeat: -1,
-        yoyo: true,
-        duration: 1.2,
-        ease: 'sine.inOut',
-      })
-
-      tl.fromTo(detailsRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, '-=0.4')
-    }, sectionRef)
-
-    return () => ctx.revert()
+    return () => mm.revert()
   }, [])
 
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col items-center justify-center w-full h-screen px-8"
+      className="flex flex-col items-center justify-center w-full min-h-screen md:h-screen px-6 md:px-8 py-20 md:py-0"
     >
       <div ref={titleRef} className="w-full max-w-5xl mb-10 opacity-0">
         <span className="font-mono text-xs tracking-widest text-orange uppercase">Chapter {project.chapter}</span>
@@ -69,7 +75,7 @@ export default function ProjectNFT() {
         <p className="font-body text-gray mt-2">{project.tagline}</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-16 max-w-5xl w-full items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-5xl w-full items-center">
         <div className="flex items-center gap-8">
           <svg ref={qrRef} viewBox="0 0 80 80" className="w-28 h-28 flex-shrink-0" fill="none">
             <path d="M5 5 H30 V30 H5 Z" stroke="var(--ink)" strokeWidth="3" fill="none" />

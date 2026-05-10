@@ -31,7 +31,7 @@ export default function Navbar() {
         {content.hero.name.split(' ').map((n) => n[0]).join('')}
       </span>
 
-      <ul className="flex gap-8">
+      <ul className="hidden md:flex gap-8">
         {NAV_LINKS.map(({ label, href }) => (
           <li key={label}>
             <a

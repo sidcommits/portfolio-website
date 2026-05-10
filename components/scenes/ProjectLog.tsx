@@ -31,55 +31,70 @@ export default function ProjectLog() {
   const detailsRef   = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: '+=180%',
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      })
+    const mm = gsap.matchMedia()
 
-      tl.fromTo(titleRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 })
-      tl.fromTo(searchBoxRef.current, { y: 30, opacity: 0, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out' }, '-=0.1')
-
-      // Typewriter query
-      const queryEl = queryRef.current
-      if (queryEl) {
-        queryEl.textContent = ''
-        const chars = EXAMPLE_QUERIES[0].split('')
-        tl.to({}, {
-          duration: 0.6,
-          onUpdate: function() {
-            const count = Math.floor(this.progress() * chars.length)
-            if (queryEl) queryEl.textContent = chars.slice(0, count).join('')
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=180%',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
           },
-        }, '-=0.05')
-      }
+        })
+        tl.fromTo(titleRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 })
+        tl.fromTo(searchBoxRef.current, { y: 30, opacity: 0, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out' }, '-=0.1')
+        const queryEl = queryRef.current
+        if (queryEl) {
+          queryEl.textContent = ''
+          const chars = EXAMPLE_QUERIES[0].split('')
+          tl.to({}, { duration: 0.6, onUpdate: function() { const count = Math.floor(this.progress() * chars.length); if (queryEl) queryEl.textContent = chars.slice(0, count).join('') } }, '-=0.05')
+        }
+        tl.fromTo(resultRef.current, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.1')
+        tl.fromTo(logsRef.current?.querySelectorAll('[data-log]') ?? [], { opacity: 0, x: -10 }, { opacity: 1, x: 0, stagger: 0.08, duration: 0.25 }, '-=0.2')
+        tl.fromTo(detailsRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, '-=0.1')
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-      tl.fromTo(resultRef.current, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.1')
-      tl.fromTo(
-        logsRef.current?.querySelectorAll('[data-log]') ?? [],
-        { opacity: 0, x: -10 },
-        { opacity: 1, x: 0, stagger: 0.08, duration: 0.25 },
-        '-=0.2'
-      )
-      tl.fromTo(detailsRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, '-=0.1')
-    }, sectionRef)
+    mm.add('(max-width: 767px)', () => {
+      const ctx = gsap.context(() => {
+        const queryEl = queryRef.current
+        if (queryEl) queryEl.textContent = EXAMPLE_QUERIES[0]
+        gsap.set(logsRef.current?.querySelectorAll('[data-log]') ?? [], { opacity: 1, x: 0 })
+        gsap.fromTo(titleRef.current, { opacity: 0, y: 24 }, {
+          opacity: 1, y: 0, duration: 0.5,
+          scrollTrigger: { trigger: titleRef.current, start: 'top 88%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(searchBoxRef.current, { opacity: 0, y: 20, scale: 0.97 }, {
+          opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power2.out', delay: 0.1,
+          scrollTrigger: { trigger: searchBoxRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(resultRef.current, { opacity: 0, y: 20 }, {
+          opacity: 1, y: 0, duration: 0.5, delay: 0.1,
+          scrollTrigger: { trigger: resultRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+        gsap.fromTo(detailsRef.current, { opacity: 0, y: 20 }, {
+          opacity: 1, y: 0, duration: 0.5,
+          scrollTrigger: { trigger: detailsRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        })
+      }, sectionRef)
+      return () => ctx.revert()
+    })
 
-    return () => ctx.revert()
+    return () => mm.revert()
   }, [])
 
   return (
     <section
       ref={sectionRef}
       id="projects"
-      className="flex flex-col items-center justify-center w-full h-screen px-8"
+      className="flex flex-col items-center justify-center w-full min-h-screen md:h-screen px-6 md:px-8 py-20 md:py-0"
     >
-      <div className="grid grid-cols-2 gap-16 max-w-5xl w-full items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-5xl w-full items-start">
 
         {/* Left — search interface mockup */}
         <div className="flex flex-col gap-4">
