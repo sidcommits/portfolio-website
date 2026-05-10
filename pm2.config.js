@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'portfolio',
       script: 'node_modules/.bin/next',
-      args: 'start',
+      args: 'start -p 6767',
       cwd: '/var/www/portfolio-website',
       env: {
         NODE_ENV: 'production',
